@@ -264,14 +264,13 @@ CHECK PROC
     MOV CX, DI          ; TO
     MOV SI, DI          ; CHECK
  LOOPBACK:              ; IF 
-    MOV AL, PCNUM[DI]   ; THE
-    CMP PCNUM[SI], AL   ; GENERATED
+    CMP PCNUM[SI], DL   ; GENERATED
     JZ ERROR            ; DIGIT
     DEC SI              ; ALREADY
     LOOP LOOPBACK       ; EXISTS
     JMP EXIT            ; SOMEWHERE
 ERROR:                  ; IN
-    MOV ERRORF, 0       ; THE
+    MOV ERRORF, 1       ; THE
  EXIT:                  ; NUMBER
     POP CX              
     RET
